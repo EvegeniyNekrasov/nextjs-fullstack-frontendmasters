@@ -15,8 +15,6 @@ async function getEntries() {
       createdAt: 'desc',
     },
   })
-  // just to try if it works
-  await analyze(`Today was a bad day, i get fired from my job.`)
 
   return entries
 }

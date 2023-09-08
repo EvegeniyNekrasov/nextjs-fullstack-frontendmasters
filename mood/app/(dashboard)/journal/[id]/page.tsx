@@ -19,11 +19,12 @@ const getEntry = async (id) => {
 
 const JournalEditorPage = async ({ params }) => {
   const entry = await getEntry(params.id)
+  const { mood, summary, color, subject, negative } = entry?.analysis
   const analisysData = [
-    { name: 'Subject', value: '' },
-    { name: 'Summary', value: '' },
-    { name: 'Mood', value: '' },
-    { name: 'Negative', value: 'false' },
+    { name: 'Summary', value: summary },
+    { name: 'Subject', value: subject },
+    { name: 'Mood', value: mood },
+    { name: 'Negative', value: negative ? 'True' : 'False' },
   ]
 
   return (
@@ -32,7 +33,7 @@ const JournalEditorPage = async ({ params }) => {
         <Editor entry={entry} />
       </div>
       <div className="border-l border-black/10">
-        <div className="bg-blue-300 px-6 py-10">
+        <div className=" px-6 py-10" style={{ backgroundColor: color }}>
           <h2 className="text-2xl">Analysis</h2>
         </div>
         <div>
