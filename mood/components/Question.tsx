@@ -40,7 +40,7 @@ const Question = () => {
         </button>
       </form>
       {loading && <div>...loading</div>}
-      {response && <div>{response}</div>}
+      {response && <div className='px-4 py-8 bg-cyan-100 rounded-lg mt-3'>{response}</div>}
     </div>
   )
 }
