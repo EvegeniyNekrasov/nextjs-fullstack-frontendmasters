@@ -4,7 +4,12 @@ import { prisma } from '@/utils/db'
 import { revalidatePath } from 'next/cache'
 import { NextResponse } from 'next/server'
 
-const arr = ['Frase 1', 'Frase 2', 'Frase 3', 'Frase 4', 'Frase 5']
+const arr = [
+  'Escribes sobre tus emociones...',
+  'Escrribe sobre lo que te sientas hoy...',
+  'Cuenta sobre lo que te paso estos días...',
+]
+
 const randomIndex = Math.floor(Math.random() * arr.length)
 const randomFrase = arr[randomIndex]
 
@@ -21,6 +26,7 @@ export const POST = async () => {
   await prisma.analysis.create({
     data: {
       entryId: entry.id,
+      userId: user.id,
       ...analysis,
     },
   })
